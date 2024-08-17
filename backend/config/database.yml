@@ -1,0 +1,22 @@
+default: &default
+  adapter: mysql2
+  encoding: utf8mb4
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  username: root
+  password:
+  host: localhost
+
+development:
+  <<: *default
+  database: food_expiration_tracker_development
+
+test:
+  <<: *default
+  database: food_expiration_tracker_test
+
+production:
+  <<: *default
+  database: food_expiration_tracker_production
+  username: <%= ENV['FOOD_EXPIRATION_TRACKER_DATABASE_USER'] %>
+  password: <%= ENV['FOOD_EXPIRATION_TRACKER_DATABASE_PASSWORD'] %>
+  host: <%= ENV['FOOD_EXPIRATION_TRACKER_DATABASE_HOST'] %>
